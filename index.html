@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #btn, #btn2 {
+            box-sizing: border-box;
+            display: block;
+            margin: 40px auto 0;
+            padding: 120px;
+            background-color: #bbbbbb;
+            border: 5px solid #bbb;
+        }
+
+        #btn:active, #btn2:active {
+            border: 5px solid #999;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">Click me</button>
+<button id="btn2">Click me</button>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="jquery.tripleclick.js"></script>
+<script>
+    $('#btn').on('tripleclick', function () {
+        alert(1);
+    });
+
+    $('#btn2').on('tripleclick', function () {
+        alert(2);
+    });
+</script>
+</body>
+</html>
