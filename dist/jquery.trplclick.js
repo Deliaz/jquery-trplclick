@@ -44,7 +44,7 @@
                     obj.clearRuntime();
                 }
 
-                // Catch third click
+                // Catch the third click
                 if (hasTwo) {
                     time[2] = Date.now();
                     diff[1] = time[2] - time[1];
@@ -57,13 +57,13 @@
                     obj.clearRuntime();
                 }
 
-                // Catch first click
+                // Catch the first click
                 else if (!hasOne) {
                     hasOne = true;
                     time[0] = Date.now();
                 }
 
-                // Catch second click
+                // Catch the second click
                 else if (hasOne) {
                     time[1] = Date.now();
                     diff[0] = time[1] - time[0];
