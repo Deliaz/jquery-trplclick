@@ -1,5 +1,6 @@
 /*!
-* jQuery RealTripleClick plugin for custom 'tripleclick' event
+* TrplClick - real Triple Click event plugin for jQuery
+* Version: 1.1.0
 * Author: @deliaz https://github.com/Deliaz
 * Licensed under the MIT license
 */
@@ -18,10 +19,10 @@
 
             // Default settings
             var defaults = {
-                MinClickInterval: 100,
-                MaxClickInterval: 500,
-                MinPercentThird: 85.0,
-                MaxPercentThird: 130.0
+                minClickInterval: 100,
+                maxClickInterval: 500,
+                minPercentThird: 85.0,
+                maxPercentThird: 130.0
             };
 
             // Runtime for the handleObj
@@ -35,11 +36,11 @@
                     conf = $.extend({}, defaults, event.data);
 
                 // Clear runtime, if timeout for 2nd click failed
-                if (time[1] && now - time[1] >= conf.MaxClickInterval) {
+                if (time[1] && now - time[1] >= conf.maxClickInterval) {
                     obj.clearRuntime();
                 }
                 // Clear runtime, if timeout for 3rd click failed
-                if (time[0] && time[1] && now - time[0] >= conf.MaxClickInterval) {
+                if (time[0] && time[1] && now - time[0] >= conf.maxClickInterval) {
                     obj.clearRuntime();
                 }
 
@@ -50,7 +51,7 @@
 
                     var deltaPercent = 100.0 * (diff[1] / diff[0]);
 
-                    if (deltaPercent >= conf.MinPercentThird && deltaPercent <= conf.MaxPercentThird) {
+                    if (deltaPercent >= conf.minPercentThird && deltaPercent <= conf.maxPercentThird) {
                         oldHandler.apply(this, arguments);
                     }
                     obj.clearRuntime();
@@ -67,7 +68,7 @@
                     time[1] = Date.now();
                     diff[0] = time[1] - time[0];
 
-                    (diff[0] >= conf.MinClickInterval && diff[0] <= conf.MaxClickInterval) ?
+                    (diff[0] >= conf.minClickInterval && diff[0] <= conf.maxClickInterval) ?
                         hasTwo = true : obj.clearRuntime();
                 }
 

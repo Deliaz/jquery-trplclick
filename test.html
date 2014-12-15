@@ -45,8 +45,15 @@
             log('dblclick triggered');
         });
 
-        $('#btn').on('trplclick', function () {
-            log('>> trplclick triggered');
+        $('#btn').on('trplclick',  function () {
+            log('>> regular trplclick triggered');
+        });
+
+        $('#btn').on('trplclick', {
+            "maxClickInterval": 2000,
+            "minClickInterval": 500
+        }, function () {
+            log('>> long trplclick triggered');
         });
 
         function log(msg) {
