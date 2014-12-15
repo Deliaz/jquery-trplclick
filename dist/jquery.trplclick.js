@@ -6,7 +6,7 @@
 
 "use strict";
 (function ($) {
-    $.event.special.tripleclick = {
+    $.event.special.trplclick = {
         setup: function () {
             $(this).bind('click', clickHandler);
         },
@@ -90,7 +90,7 @@
     };
 
     function clickHandler(event) {
-        $(this).triggerHandler('tripleclick', [event.data]);
+        $(this).triggerHandler('trplclick', [event.data]);
     }
 
 })(jQuery);
