@@ -1,6 +1,7 @@
 ## TrplClick &mdash; real 'triple click' event plugin for jQuery
 
-Triple click event *'trplclick'* will be triggered only when all three clicks fired with equal interval.
+Triple click event will be triggered only when all three clicks fired with equal interval.
+
 
 ### Usage: 
 ```javascript
@@ -8,6 +9,7 @@ $('.myBtn').on('trplclick', function () {
   // Your awesom code here
 });
 ```
+That's it! Now you have true 'triple click' event handler.
 
 ### Options
 Default settings are suitable for most cases, but you can customize it anyway
