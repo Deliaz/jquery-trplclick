@@ -25,7 +25,7 @@
                 maxPercentThird: 130.0
             };
 
-            // Runtime for the handleObj
+            // Runtime
             var hasOne = false,
                 hasTwo = false,
                 time = [0, 0, 0],
@@ -35,11 +35,11 @@
                 var now = Date.now(),
                     conf = $.extend({}, defaults, event.data);
 
-                // Clear runtime, if timeout for 2nd click failed
+                // Clear runtime after timeout fot the 2nd click
                 if (time[1] && now - time[1] >= conf.maxClickInterval) {
                     obj.clearRuntime();
                 }
-                // Clear runtime, if timeout for 3rd click failed
+                // Clear runtime after timeout fot the 3rd click
                 if (time[0] && time[1] && now - time[0] >= conf.maxClickInterval) {
                     obj.clearRuntime();
                 }
