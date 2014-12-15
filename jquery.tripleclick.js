@@ -1,6 +1,6 @@
 /*!
-* jQuery 'tripleclick' event plugin
-* Author: @deliaz
+* jQuery RealTripleClick plugin for custom 'tripleclick' event
+* Author: @deliaz https://github.com/Deliaz
 * Licensed under the MIT license
 */
 
@@ -13,13 +13,15 @@
         teardown: function () {
             $(this).unbind('click', clickHandler);
         },
-        add: function (handleObj) {
-            var oldHandler = handleObj.handler;
+        add: function (obj) {
+            var oldHandler = obj.handler;
+
+            // Default settings
             var defaults = {
                 MinClickInterval: 100,
                 MaxClickInterval: 500,
                 MinPercentThird: 85.0,
-                MaxPercentThird: 150.0
+                MaxPercentThird: 130.0
             };
 
             // Runtime for the handleObj
@@ -28,17 +30,17 @@
                 time = [0, 0, 0],
                 diff = [0, 0];
 
-            handleObj.handler = function (event, data) {
+            obj.handler = function (event, data) {
                 var now = Date.now(),
                     conf = $.extend({}, defaults, event.data);
 
-                // Clear, if we failed timeout for 2-rd click
+                // Clear runtime, if timeout for 2nd click failed
                 if (time[1] && now - time[1] >= conf.MaxClickInterval) {
-                    handleObj.clearRuntime();
+                    obj.clearRuntime();
                 }
-                // Clear, if we failed timeout for 3-rd click
+                // Clear runtime, if timeout for 3rd click failed
                 if (time[0] && time[1] && now - time[0] >= conf.MaxClickInterval) {
-                    handleObj.clearRuntime();
+                    obj.clearRuntime();
                 }
 
                 // Catch third click
@@ -51,7 +53,7 @@
                     if (deltaPercent >= conf.MinPercentThird && deltaPercent <= conf.MaxPercentThird) {
                         oldHandler.apply(this, arguments);
                     }
-                    handleObj.clearRuntime();
+                    obj.clearRuntime();
                 }
 
                 // Catch first click
@@ -66,13 +68,15 @@
                     diff[0] = time[1] - time[0];
 
                     (diff[0] >= conf.MinClickInterval && diff[0] <= conf.MaxClickInterval) ?
-                        hasTwo = true : handleObj.clearRuntime();
+                        hasTwo = true : obj.clearRuntime();
                 }
 
             };
 
-            // Runtime clearing function
-            handleObj.clearRuntime = function() {
+            /**
+             * Clear runtime
+             */
+            obj.clearRuntime = function() {
                 hasOne = false;
                 hasTwo = false;
                 time[0] = 0;
