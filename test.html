@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        #wrap {
+            width: 600px;
+            background-color: #e2e2e2;
+            margin: 60px auto;
+            padding: 20px;
+            position: relative;
+        }
+        #log {
+            background-color: #ffffff;
+            padding: 10px;
+            font-size: 12px;
+        }
+        #btn {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <p>Note: 'trplclick' event triggers only when all three click fired with equal interval.</p>
+    <button id="btn">Tripleclick me</button>
+
+    <h3>Event log:</h3>
+    <div id="log"></div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="realTripleClick/jquery.trplclick.js"></script>
+<script>
+    $('#btn').on('click', function () {
+        log('click triggered');
+    });
+
+    $('#btn').on('dblclick', function () {
+        log('doubleclick triggered');
+    });
+
+    $('#btn').on('tripleclick', function () {
+        log('>> tripleclick triggered');
+    });
+
+    function log(msg) {
+        $('<div/>').text(msg).appendTo('#log');
+    }
+</script>
+</body>
+</html>
