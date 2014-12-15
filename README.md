@@ -3,7 +3,7 @@
 Triple click event will be triggered only when all three clicks are fired with equal interval.
 
 ### Install
-Clone this repo or
+Clone this repo or:
 ```
 bower install jquery-trplclick
 ```
